@@ -1,4 +1,4 @@
-h1. Multiple Uploads using Ruby on Rails 2.0.2, SWFUpload 2.0.1, and Attachment_Fu
+h1. Multiple Uploads using Ruby on Rails, SWFUpload, and AttachmentFu
 
 *by David South Jr*
 
@@ -22,7 +22,7 @@ For example, the process for a photograph website works something like this:
 From the server's point of view, it's the same as a user uploading one file at a time -- greatly simplifying server set up.
 
 
-h2. Attachment_fu
+h2. AttachmentFu
 
 "Rick Olsen":http://techno-weenie.net/ programmed the best attachment plugin for Ruby on Rails -- "attachment_fu":http://svn.techno-weenie.net/projects/plugins/attachment_fu/. It manages the server side upload process, storage, and retrieval of almost any attachment. For photographs it manages resizing and thumbnails, too. Storage options include saving to the filesystem, saving attachments into the database, or saving onto the Amazon S3 storage network.
 
@@ -31,7 +31,7 @@ h2. Attachment_fu
 
 h2. Put it all together
 
-To combine SWFUpload and attachment_fu is to use the best of both worlds -- a powerful client (swfupload) and server (attachment_fu) upload process. After a lot of research, I put together a sample application that combines Ruby on Rails, Attachment_fu, and SWFUpload.
+To combine SWFUpload and attachment_fu is to use the best of both worlds -- a powerful client (swfupload) and server (attachment_fu) upload process. After a lot of research, I put together a sample application that combines Ruby on Rails, AttachmentFu, and SWFUpload.
 
 This application is based on the "PHP application demo":http://demo.swfupload.org/applicationdemo/index.php included in the "SWFUpload demos":http://demo.swfupload.org/.
 
@@ -40,20 +40,24 @@ This is a simple demonstration of how all these components can work together. Go
 
 h2. Download
 
-Download "SWFUpload v2.0 Rails Demo":http://appeddesign.com/rails_swfupload/
+The public repository for rails-swfupload is on "github":http://github.com. To clone the repository:
+
+@git clone git://github.com/davidsouth/rails-swfupload.git@
+
+Or download it from the project page: "Rails/SWFUpload":http://appeddesign.com/rails_swfupload/
 
 
 h2. Contact
 
-If you have any suggestions, tips, bugs please email dave at my website domain, "appeddesign.com":http://appeddesign.com.
+If you have any suggestions, tips, bugs please email dave at "appeddesign.com":http://appeddesign.com.
 
 
 h2. Requirements
 
 # Ruby on Rails 2.0.2
-# Imagemagick
-# Ruby gem mini_magick
-# SQLite3
+# Freeimage
+# Ruby gem image_science
+# SQLite3 or MySQL
 
 Included in this application:
 
@@ -67,11 +71,27 @@ h2. Mimetype-fu
 Flash sets the mimetype for each file to application/octet-stream. Attachment_fu requires the mimetype to be set correctly before it will accept the files. "Matt Aimonetti":http://railsontherun.com/ wrote "mimetype-fu":http://code.google.com/p/mimetype-fu/ to help attachment_fu properly set the mimetype.
 
 
+h2. attachment_fu_hack
+
+Using an "evil twin":http://errtheblog.com/posts/67-evil-twin-plugin plugin, I overrode several standard AttachmentFu methods.
+
+# Uploads through SWFUpload will automatically detect mimetype.
+# Transliterated uploaded filenames have extra underscores removed and the whole filename is downcased.
+# When running tests a temporary directory is used rather than the public/photos directory
+
+
+h2. Functional Test
+
+I added two functional tests for the photos controller. It tests both create and swfupload. Since each time the test is run, it adds a file to the temporary directory, the same test will destroy the photo as well.
+
+
 h2. Leopard Tips
 
-To upgrade Mac OS X 10.5 (Leopard) to the latest version of Rails, first upgrade ruby gems (sudo gem update --system) then update Rails itself (sudo gem update). To install ImageMagick and mini_magick, I suggest installing "Macports":http://macports.org and then using port to install ImageMagick (port install ImageMagick). Use gems to install mini_magick (sudo gem install mini_magick).
+To upgrade Mac OS X 10.5 (Leopard) to the latest version of Rails, first upgrade ruby gems (sudo gem update --system) then update Rails itself (sudo gem update). To install FreeImage and image_science, I suggest installing "Macports":http://macports.org and then using port to install FreeImage (port install freeimage). Use gems to install image_science (sudo gem install image_science).
 
-You can change the configuration to use the RMagick gem or install free-image and the image_science gem.
+Remember to install XCode tools (on Leopard install disk) before you can use Macports.
+
+You can change the photo model to use mini_magick or RMagick in combination with ImageMagick. However, in my tests, I've found FreeImage/image_science to be much faster than ImageMagick/mini_magick.
 
 
 h2. Links
@@ -86,3 +106,4 @@ Useful links and related information found while researching this project:
 * "Ruby forum discussion":http://www.ruby-forum.com/topic/114752 - More from Peter De Berdt.
 * "Flornet's Blog":http://blog.flornet.fr/2007/05/29/swfupload-using-ruby-on-rails-demo/ - An SWFUpload 1.x Rails demo.
 * "Working with attachment_fu":http://almosteffortless.com/2007/03/25/working-with-attachment_fu/ - Some attachment_fu tips.
+* "Evil Twin Plugins":http://errtheblog.com/posts/67-evil-twin-plugin
