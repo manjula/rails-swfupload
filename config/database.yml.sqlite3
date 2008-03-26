@@ -6,3 +6,10 @@ development:
   username: root
   password:
   host: localhost
+
+test:
+  adapter: mysql
+  database: rails_swf_test
+  username: root
+  password:
+  host: localhost
