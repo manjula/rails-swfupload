@@ -2,6 +2,11 @@ h1. Multiple Uploads using Ruby on Rails, SWFUpload, and AttachmentFu
 
 *by David South Jr*
 
+Updated: Wednesday, 26 March 2008, 4:16 PM
+
+
+h2. SWFUpload
+
 "SWFUpload":http://www.swfupload.org is a fantastic application which makes short work of a hard problem -- how to upload multiple files to a website. Most solutions using Ruby on Rails revolve around multiple fields and complex ajax calls to monitor the upload progress. These are all hard to implement because they lack compatibility across browsers, require difficult server set up, and usually fail to update quick enough to give real upload progress feedback to the user.
 
 SWFUpload elegantly solves this problem by using a hidden Flash movie, clever Javascript callbacks, and CSS. It is cross-platform (Mac, Linux or Windows) and cross-browser (Safari, Firefox, IE) compatible.
