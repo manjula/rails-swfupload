@@ -22,11 +22,6 @@ class PhotosController < ApplicationController
 
   def swfupload
     # swfupload action set in routes.rb
-    
-    # The content_type is set as application/octet by the flash program
-    # Use mimetype-fu to determine the mimetype before passing it 
-    # to the attachment_fu enabled model
-    params[:Filedata].content_type = File.mime_type?(params[:Filedata].original_filename)
     @photo = Photo.new :uploaded_data => params[:Filedata]
     @photo.save!
     
