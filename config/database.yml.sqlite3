@@ -2,7 +2,7 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: mysql
-  database: swfdemo_dev
+  database: rails_swf_dev
   username: root
   password:
   host: localhost

@@ -1,0 +1,7 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: rails_swf_dev
+  username: root
+  password: 
+  host: localhost
