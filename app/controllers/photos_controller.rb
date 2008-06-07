@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+  # FIXME: Pass sessions through to allow cross-site forgery protection
+  protect_from_forgery :except => :swfupload
+  
   def index
     @photos = Photo.find_all_by_parent_id(nil)
   end
