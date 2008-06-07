@@ -2,7 +2,7 @@ h1. Multiple Uploads using Ruby on Rails, SWFUpload, and AttachmentFu
 
 *by David South Jr*
 
-Updated: Wednesday, 26 March 2008, 4:16 PM
+Updated: Saturday, 7 June 2008, 2:37 PM
 
 
 h2. SWFUpload
@@ -45,11 +45,9 @@ This is a simple demonstration of how all these components can work together. Go
 
 h2. Download
 
-The public repository for rails-swfupload is on "github":http://github.com. To clone the repository:
+The public repository for rails-swfupload is on "github":http://github.com/davidsouth. To clone the repository:
 
 @git clone git://github.com/davidsouth/rails-swfupload.git@
-
-Or download it from the project page: "Rails/SWFUpload":http://appeddesign.com/rails_swfupload/
 
 
 h2. Contact
@@ -59,16 +57,16 @@ If you have any suggestions, tips, bugs please email dave at "appeddesign.com":h
 
 h2. Requirements
 
-# Ruby on Rails 2.0.2
+# Ruby on Rails 2.1.0
 # Freeimage
 # Ruby gem image_science
 # SQLite3 or MySQL
 
 Included in this application:
 
-# SWFUpload 2.0.1
-# attachment_fu
-# mimetype-fu
+# SWFUpload 2.1.0
+# attachment_fu (7 Jun 2008)
+# mimetype-fu (7 Jun 2008)
 
 
 h2. Mimetype-fu
@@ -112,3 +110,8 @@ Useful links and related information found while researching this project:
 * "Flornet's Blog":http://blog.flornet.fr/2007/05/29/swfupload-using-ruby-on-rails-demo/ - An SWFUpload 1.x Rails demo.
 * "Working with attachment_fu":http://almosteffortless.com/2007/03/25/working-with-attachment_fu/ - Some attachment_fu tips.
 * "Evil Twin Plugins":http://errtheblog.com/posts/67-evil-twin-plugin
+
+
+h2. Todo
+
+* Implement best method of passing session data through SWFUpload.
